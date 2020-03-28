@@ -3,7 +3,7 @@ package view;
 import modele.Etat;
 
 /**
- * DÃ©finit un thread qui redessine la {@link Fenetre} rÃ©gulierement
+ * Définit un thread qui redessine la {@link JFrame} régulierement
  */
 public class ThreadAff extends Thread {
 	private Boolean draw = true;
@@ -11,7 +11,7 @@ public class ThreadAff extends Thread {
 	private Etat etat;
 	
 	/**
-	 * Associe le thread avec Etat et Affichage
+	 * Associe le thread avec {@link Etat} et {@link Affichage}
 	 * @param aff l'affichage
 	 * @param et l'etat
 	 */
@@ -21,20 +21,19 @@ public class ThreadAff extends Thread {
 	}
 	
 	/**
-	 * Fonction qui sert Ã  savoir si il faut redessiner la fenetre (appelÃ©e par les autres fontions)
+	 * Fonction qui sert à  savoir si il faut redessiner la fenetre (appelée par les autres fontions)
 	 */
 	public void redraw() {
 		draw = true;
 	}
 	
 	/**
-	 * Actualise la fenetre rÃ©gulierement
+	 * Actualise la fenetre régulierement si besoin
 	 */
 	@Override
 	public void run() {
 		while (!etat.isPerdu()) {
 			if (draw) {
-				affichage.revalidate();
 				affichage.repaint();
 				draw = false;
 			}
